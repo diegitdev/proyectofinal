@@ -18,7 +18,7 @@ Antes de empezar, asegúrate de tener instalado lo siguiente:
 
 1.  Clona el repositorio:
     ```bash
-    git clone <URL_del_repositorio>
+    git clone https://github.com/diegitdev/proyectofinal
     cd proyectofinal # O el nombre de tu carpeta principal
     ```
 
