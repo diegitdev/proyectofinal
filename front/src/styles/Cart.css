@@ -1,0 +1,21 @@
+.cart-title {
+  margin-bottom: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.cart-item {
+  transition: background-color 0.2s;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.cart-item:hover {
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 600px) {
+  .cart-item {
+    padding: 4px;
+  }
+} 

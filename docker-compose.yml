@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    container_name: proyectofinal
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:perfumesdb
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  frontend:
+    build: ./front
+    ports:
+      - "3000:80"
+    container_name: proyectofinal-frontend
+    depends_on:
+      - app
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080/api
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update

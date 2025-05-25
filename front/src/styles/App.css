@@ -1,0 +1,501 @@
+/* Variables globales */
+:root {
+  --primary-color: #8e44ad;
+  --primary-dark: #7b4397;
+  --primary-light: #9a6ebc;
+  --secondary-color: #2c83c5;
+  --accent-color: #e74c3c;
+  --text-color: #2c3e50;
+  --light-text: #7f8c8d;
+  --background-color: #f9f9f9;
+  --card-background: #fff;
+  --border-color: #e8e8e8;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  --border-radius: 10px;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  --transition: all 0.3s ease;
+}
+
+/* Estilos globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.6;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Barra de navegación */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(90deg, #141414, #673c7c);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 6px 20px rgba(38, 0, 255, 0.15);
+}
+
+.nav-brand {
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.logo:hover {
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.logo:hover::after {
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.nav-links a {
+  display: block;
+  padding: 0.6rem 1rem;
+  margin: 0.2rem 0;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -100%;
+  top: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.nav-links a:hover::before {
+  left: 0;
+}
+
+.nav-links a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.admin-link {
+  color: var(--accent-color) !important;
+  font-weight: 700 !important;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Estilos para acciones de usuario */
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.user-info:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.user-greeting {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+.user-name {
+  color: white;
+  font-weight: 600;
+}
+
+.logout-button {
+  width: 100%;
+  margin-top: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover::before {
+  width: 100%;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los enlaces de autenticación */
+.auth-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 0.6rem;
+}
+
+.login-link, .register-link {
+  display: block;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-link {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.login-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.login-link:hover::before {
+  width: 100%;
+}
+
+.login-link:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-link {
+  color: var(--primary-color) !important;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(139, 68, 173, 0), 
+    rgba(139, 68, 173, 0.1), 
+    rgba(139, 68, 173, 0));
+  transition: all 0.5s ease;
+}
+
+.register-link:hover::after {
+  left: 100%;
+}
+
+.register-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenido principal */
+.content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 300px);
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+}
+
+.btn.primary {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(106, 53, 156, 0.25);
+}
+
+.btn.primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(106, 53, 156, 0.3);
+}
+
+.btn.secondary {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn.secondary:hover {
+  background-color: rgba(106, 53, 156, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn.view-details {
+  width: 100%;
+  margin-top: 0.8rem;
+  border-radius: var(--border-radius);
+}
+
+/* Tarjetas */
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  border-color: rgba(106, 53, 156, 0.1);
+}
+
+/* Estados */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.2rem;
+  color: var(--light-text);
+}
+
+.error-message {
+  padding: 1.2rem;
+  background-color: rgba(231, 76, 60, 0.08);
+  color: var(--error-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--error-color);
+}
+
+.success-message {
+  padding: 1.2rem;
+  background-color: rgba(46, 204, 113, 0.08);
+  color: var(--success-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--success-color);
+}
+
+/* Pie de página */
+.footer {
+  background: linear-gradient(90deg, #7b4397, #8e44ad);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media queries */
+@media screen and (min-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 70px;
+  }
+  
+  .nav-brand {
+    margin-bottom: 0;
+    margin-right: 2rem;
+    text-align: left;
+  }
+  
+  .nav-links {
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+    margin: 0;
+  }
+  
+  .nav-links a {
+    margin: 0 0.5rem;
+    width: auto;
+    padding: 0.3rem 1rem;
+  }
+  
+  .nav-links a::before {
+    width: 2px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: scaleY(0);
+  }
+  
+  .nav-links a:hover::before {
+    transform: scaleY(1);
+  }
+  
+  .user-actions {
+    flex-direction: row;
+    margin-top: 0;
+    width: auto;
+  }
+  
+  .user-info {
+    flex-direction: row;
+    margin-bottom: 0;
+    width: auto;
+  }
+  
+  .logout-button {
+    width: auto;
+    margin-top: 0;
+    margin-left: 1rem;
+  }
+  
+  .auth-links {
+    flex-direction: row;
+    width: auto;
+  }
+  
+  .login-link, .register-link {
+    width: auto;
+    margin-left: 1rem;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+} 
